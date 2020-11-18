@@ -1,0 +1,3 @@
+services:
+  custom_storage_adapter:
+    class: Vdm\Bundle\PrometheusBundle\Tests\Fixtures\AppBundle\Services\CustomStorageAdapter

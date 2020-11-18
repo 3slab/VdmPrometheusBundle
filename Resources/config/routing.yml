@@ -1,0 +1,3 @@
+vdm_prometheus_metrics:
+    path:     "%vdm_prometheus.metrics_path%"
+    defaults: { _controller: Vdm\Bundle\PrometheusBundle\Controller\PrometheusController::metrics }

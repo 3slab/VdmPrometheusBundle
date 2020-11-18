@@ -1,0 +1,3 @@
+vdm_prometheus:
+  resource: "@VdmPrometheusBundle/Resources/config/routing.yml"
+  prefix:   /

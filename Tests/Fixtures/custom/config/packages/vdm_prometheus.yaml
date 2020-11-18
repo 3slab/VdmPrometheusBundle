@@ -1,0 +1,4 @@
+vdm_prometheus:
+  storage:
+    type: custom
+    service: custom_storage_adapter

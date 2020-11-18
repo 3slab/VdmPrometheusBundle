@@ -1,0 +1,4 @@
+vdm_prometheus:
+  storage:
+    type: custom
+    service: my_unknown_service
