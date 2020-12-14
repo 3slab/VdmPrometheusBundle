@@ -1,0 +1,7 @@
+success_route:
+  path: /myapp/success
+  controller: Vdm\Bundle\PrometheusBundle\Tests\Fixtures\AppBundle\Controller\AppController::success
+
+error_route:
+  path: /myapp/error
+  controller: Vdm\Bundle\PrometheusBundle\Tests\Fixtures\AppBundle\Controller\AppController::error

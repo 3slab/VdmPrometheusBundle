@@ -10,7 +10,9 @@ namespace Vdm\Bundle\PrometheusBundle;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Vdm\Bundle\PrometheusBundle\DependencyInjection\Compiler\CollectorPass;
 use Vdm\Bundle\PrometheusBundle\DependencyInjection\Compiler\CustomStoragePass;
+use Vdm\Bundle\PrometheusBundle\Monitoring\Collector\AbstractCollector;
 
 class VdmPrometheusBundle extends Bundle
 {
@@ -18,6 +20,12 @@ class VdmPrometheusBundle extends Bundle
     {
         parent::build($container);
 
+        $container
+            ->registerForAutoconfiguration(AbstractCollector::class)
+            ->addTag('vdm_prometheus.collector')
+        ;
+
         $container->addCompilerPass(new CustomStoragePass());
+        $container->addCompilerPass(new CollectorPass());
     }
 }

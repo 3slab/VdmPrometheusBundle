@@ -1,3 +1,7 @@
 services:
   custom_storage_adapter:
     class: Vdm\Bundle\PrometheusBundle\Tests\Fixtures\AppBundle\Services\CustomStorageAdapter
+
+  Vdm\Bundle\PrometheusBundle\Tests\Fixtures\AppBundle\Controller\:
+    resource: '../../Controller'
+    tags: ['controller.service_arguments']

@@ -6,7 +6,9 @@ use Prometheus\CollectorRegistry;
 use Prometheus\Storage\APC;
 use Prometheus\Storage\InMemory;
 use Prometheus\Storage\Redis;
+use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Definition;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -28,6 +30,8 @@ class VdmPrometheusExtension extends ConfigurableExtension
      */
     protected function loadInternal(array $mergedConfig, ContainerBuilder $container)
     {
+        $container->setParameter('vdm_prometheus.app_code', $mergedConfig['app']);
+        $container->setParameter('vdm_prometheus.namespace', $mergedConfig['namespace']);
         $container->setParameter('vdm_prometheus.secret', $mergedConfig['secret']);
         $container->setParameter('vdm_prometheus.metrics_path', $mergedConfig['metrics_path']);
 
@@ -46,6 +50,15 @@ class VdmPrometheusExtension extends ConfigurableExtension
             $storageDefinition->setArguments([$mergedConfig['storage']['settings']]);
         }
 
-        $prometheusDefinition->setArguments([new Reference('vdm_prometheus_storage')]);
+        $prometheusDefinition->setArguments([
+            new Reference('vdm_prometheus_storage'),
+            $mergedConfig['register_default_metrics']
+        ]);
+
+        $loader = new YamlFileLoader(
+            $container,
+            new FileLocator(__DIR__ . '/../Resources/config')
+        );
+        $loader->load('services.yml');
     }
 }

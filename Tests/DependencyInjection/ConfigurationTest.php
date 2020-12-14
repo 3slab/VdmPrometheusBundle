@@ -26,9 +26,12 @@ class ConfigurationTest extends TestCase
 
         $this->assertEquals(
             [
+                'app' => 'app',
                 'secret' => null,
                 'metrics_path' => '/metrics',
                 'storage' => ['type' => 'memory', 'service' => null],
+                'namespace' => 'vdm',
+                'register_default_metrics' => true
             ],
             $config
         );
@@ -50,9 +53,12 @@ class ConfigurationTest extends TestCase
 
         $this->assertEquals(
             [
+                'app' => 'app',
                 'secret' => null,
                 'metrics_path' => '/metrics',
-                'storage' => ['type' => 'apcu', 'service' => null]
+                'storage' => ['type' => 'apcu', 'service' => null],
+                'namespace' => 'vdm',
+                'register_default_metrics' => true
             ],
             $config
         );
@@ -74,6 +80,7 @@ class ConfigurationTest extends TestCase
 
         $this->assertEquals(
             [
+                'app' => 'app',
                 'secret' => null,
                 'metrics_path' => '/metrics',
                 'storage' => [
@@ -87,7 +94,9 @@ class ConfigurationTest extends TestCase
                         'password' => null
                     ],
                     'service' => null
-                ]
+                ],
+                'namespace' => 'vdm',
+                'register_default_metrics' => true
             ],
             $config
         );
@@ -107,9 +116,12 @@ class ConfigurationTest extends TestCase
 
         $this->assertEquals(
             [
+                'app' => 'app',
                 'secret' => null,
                 'metrics_path' => '/metrics',
-                'storage' => ['type' => 'memory', 'service' => null]
+                'storage' => ['type' => 'memory', 'service' => null],
+                'namespace' => 'vdm',
+                'register_default_metrics' => true
             ],
             $config
         );
@@ -179,12 +191,15 @@ class ConfigurationTest extends TestCase
     {
         $unprocessedConfig = [
             'vdm_prometheus' => [
+                'app' => 'myapp',
                 'secret' => 'mysecret',
                 'metrics_path' => '/mycustommetrics',
                 'storage' => [
                     'type' => $storageType,
                     'service' => null
-                ]
+                ],
+                'namespace' => 'vdm',
+                'register_default_metrics' => true
             ]
         ];
 
@@ -201,6 +216,7 @@ class ConfigurationTest extends TestCase
     {
         $unprocessedConfig = [
             'vdm_prometheus' => [
+                'app' => 'myapp',
                 'secret' => 'mysecret',
                 'metrics_path' => '/mycustommetrics',
                 'storage' => [
@@ -214,7 +230,9 @@ class ConfigurationTest extends TestCase
                         'password' => 'passphrase'
                     ],
                     'service' => null
-                ]
+                ],
+                'namespace' => 'vdm',
+                'register_default_metrics' => true
             ]
         ];
 
@@ -231,12 +249,15 @@ class ConfigurationTest extends TestCase
     {
         $unprocessedConfig = [
             'vdm_prometheus' => [
+                'app' => 'myapp',
                 'secret' => 'mysecret',
                 'metrics_path' => '/mycustommetrics',
                 'storage' => [
                     'type' => 'custom',
                     'service' => 'myserviceid'
-                ]
+                ],
+                'namespace' => 'mycustomnamespace',
+                'register_default_metrics' => false
             ]
         ];
 

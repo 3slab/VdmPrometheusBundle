@@ -1,0 +1,28 @@
+parameters:
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+        bind:
+            $namespace: "%vdm_prometheus.namespace%"
+
+    Vdm\Bundle\PrometheusBundle\:
+        resource: '../../*'
+        exclude: '../../{Entity,Controller,Monitoring,Migrations,Tests,vendor,var,VdmPrometheusBundle.php}'
+
+    Vdm\Bundle\PrometheusBundle\Monitoring\Collector\:
+        resource:  '../../Monitoring/Collector/*'
+
+    Vdm\Bundle\PrometheusBundle\Monitoring\CollectorRegistry:
+        arguments:
+            $appCode: "%vdm_prometheus.app_code%"
+            $registry: "@vdm_prometheus_registry"
+
+    Vdm\Bundle\PrometheusBundle\Controller\:
+        resource: '../../Controller'
+        arguments:
+            $registry: "@vdm_prometheus_registry"
+            $secret: '%vdm_prometheus.secret%'
+        tags: ['controller.service_arguments']

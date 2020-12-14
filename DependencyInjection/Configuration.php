@@ -20,6 +20,15 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
+                ->scalarNode('app')
+                    ->defaultValue('app')
+                ->end()
+                ->scalarNode('namespace')
+                    ->defaultValue('vdm')
+                ->end()
+                ->booleanNode('register_default_metrics')
+                    ->defaultTrue()
+                ->end()
                 ->scalarNode('secret')
                     ->defaultNull()
                 ->end()
