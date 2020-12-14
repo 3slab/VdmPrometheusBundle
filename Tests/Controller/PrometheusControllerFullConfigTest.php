@@ -123,7 +123,7 @@ class PrometheusControllerFullConfigTest extends PrometheusKernelTestCase
         );
 
         $this->assertRegExp(
-            "/# HELP mycustomnamespace_sf_app_call_total Number of call to the API\n" .
+            "/# HELP mycustomnamespace_sf_app_call_total Number of call to the app\n" .
             "# TYPE mycustomnamespace_sf_app_call_total counter\n" .
             "mycustomnamespace_sf_app_call_total\\{app=\"myapp\",route=\"\"\\} 1\n" .
             "mycustomnamespace_sf_app_call_total\\{app=\"myapp\",route=\"error_route\"\\} 1\n" .

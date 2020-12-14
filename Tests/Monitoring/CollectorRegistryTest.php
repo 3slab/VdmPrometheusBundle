@@ -32,9 +32,6 @@ class CollectorRegistryTest extends TestCase
         $result = $renderer->render($registry->getMetricFamilySamples());
 
         $expectedResult = <<<EXPECTEDRESULT
-# HELP mynamespace_sf_app_call_total Number of call to the API
-# TYPE mynamespace_sf_app_call_total counter
-mynamespace_sf_app_call_total{app="myapp",route="myroute"} 1
 # HELP mynamespace_sf_app_response_code_total Number of call to the API per response code
 # TYPE mynamespace_sf_app_response_code_total counter
 mynamespace_sf_app_response_code_total{app="myapp",route="myroute",http_code="200"} 1
@@ -69,9 +66,6 @@ EXPECTEDRESULT;
         $result = $renderer->render($registry->getMetricFamilySamples());
 
         $expectedResult = <<<EXPECTEDRESULT
-# HELP mynamespace_sf_app_call_total Number of call to the API
-# TYPE mynamespace_sf_app_call_total counter
-mynamespace_sf_app_call_total{app="myapp",route="myroute"} 1
 # HELP mynamespace_sf_app_response_code_total Number of call to the API per response code
 # TYPE mynamespace_sf_app_response_code_total counter
 mynamespace_sf_app_response_code_total{app="myapp",route="myroute",http_code="200"} 1

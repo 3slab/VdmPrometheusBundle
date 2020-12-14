@@ -51,7 +51,7 @@ class PrometheusControllerTest extends PrometheusKernelTestCase
         );
 
         $this->assertRegExp(
-            "/# HELP vdm_sf_app_call_total Number of call to the API\n" .
+            "/# HELP vdm_sf_app_call_total Number of call to the app\n" .
             "# TYPE vdm_sf_app_call_total counter\n" .
             "vdm_sf_app_call_total\\{app=\"app\",route=\"success_route\"\\} 1\n/",
             $client->getResponse()->getContent()
@@ -113,7 +113,7 @@ class PrometheusControllerTest extends PrometheusKernelTestCase
         );
 
         $this->assertRegExp(
-            "/# HELP vdm_sf_app_call_total Number of call to the API\n" .
+            "/# HELP vdm_sf_app_call_total Number of call to the app\n" .
             "# TYPE vdm_sf_app_call_total counter\n" .
             "vdm_sf_app_call_total\\{app=\"app\",route=\"\"\\} 1\n" .
             "vdm_sf_app_call_total\\{app=\"app\",route=\"error_route\"\\} 1\n" .

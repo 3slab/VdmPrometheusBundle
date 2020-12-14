@@ -109,13 +109,5 @@ class CollectorRegistry
                 $standardLabels
             );
         }
-
-        $counter = $this->registry->getOrRegisterCounter(
-            $this->namespace,
-            'sf_app_call_total',
-            'Number of call to the API',
-            array_keys($standardLabels)
-        );
-        $counter->inc(array_values($standardLabels));
     }
 }
