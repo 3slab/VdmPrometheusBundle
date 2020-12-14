@@ -1,0 +1,8 @@
+vdm_prometheus:
+  app: myapp
+  secret: mysecret
+  metrics_path: /mycustommetrics
+  storage:
+    type: memory
+  namespace: mycustomnamespace
+  register_default_metrics: false

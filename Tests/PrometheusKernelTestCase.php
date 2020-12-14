@@ -15,6 +15,18 @@ abstract class PrometheusKernelTestCase extends KernelTestCase
     use WebTestAssertionsTrait;
 
     /**
+     * Get PHP float regex
+     *
+     * @return string
+     */
+    public function getFloatRegex(): string
+    {
+        $lNum = '[0-9]+(_[0-9]+)*';
+        $dNum = "([0-9]*(_[0-9]+)*[\.]{$lNum})|({$lNum}[\.][0-9]*(_[0-9]+)*)";
+        return "(({$lNum})|({$dNum}))([eE][+-]?)?({$lNum})?";
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function tearDown(): void

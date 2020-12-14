@@ -15,10 +15,10 @@ class AppController
     }
 
     /**
-     * @throws \Exception
+     * @return Response
      */
-    public function error()
+    public function error(): Response
     {
-        throw new \Exception('myexception');
+        return new Response('error', 500);
     }
 }
