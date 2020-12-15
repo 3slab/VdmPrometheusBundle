@@ -85,7 +85,8 @@ header `VDM-Prometheus-Secret` to get the detailed result of the metrics in the 
 
 ## Metrics storage
 
-To persist metrics between requests, you have to store them in persistent storage. 
+To persist metrics between requests, you have to store them in persistent storage.
+ 
 The following storage are supported :
 
 * **In Memory** *(the default)*
