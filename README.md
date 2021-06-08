@@ -1,6 +1,6 @@
 # VdmPrometheusBundle
 
-[![Build Status](https://travis-ci.org/3slab/VdmPrometheusBundle.svg?branch=master)](https://travis-ci.org/3slab/VdmPrometheusBundle)
+[![Build Status](https://travis-ci.com/3slab/VdmPrometheusBundle.svg?branch=master)](https://travis-ci.com/3slab/VdmPrometheusBundle)
 
 This bundle provides a metric endpoint to be pulled by Prometheus. It uses the [prometheus client from PromPHP](https://github.com/PromPHP/prometheus_client_php/)
 
