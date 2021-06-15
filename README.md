@@ -140,3 +140,7 @@ With custom storage, you need to provide a Symfony service which implements the
 
 You can [create your own collector](./Resources/doc/create_your_own_collector.md) if you want to track other 
 information.
+
+## Grafana
+
+This bundle provides a [grafana dashboard](./Resources/grafana) setup to work with default configuration for settings `vdm_prometheus.app` and `vdm_prometheus.namespace`.
