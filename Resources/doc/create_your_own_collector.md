@@ -6,7 +6,7 @@ A collector is executed in 2 steps :
 * On symfony `kernel.terminate` event, it persists metrics
 
 To create your own collector, you will need to extend the 
-[AbstractController](../../Monitoring/Collector/AbstractCollector.php) class.
+[AbstractCollector](../../Monitoring/Collector/AbstractCollector.php) class.
 
 Each collector needs to implement 3 methos :
 
