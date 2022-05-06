@@ -67,18 +67,22 @@ vdm_prometheus:
   app: app
   namespace: vdm
   register_default_metrics: true
+  register_extra_metrics:
+      - 'Apcu\StartTimeCollector'
+      - 'Opcache\MemoryUsedCollector'
   secret: ~
   metrics_path: /metrics
   storage:
     type: default
 ```
 
-Parameter | Default | Description
---- | --- | ---
-`vdm_prometheus.app` | `app` | set the value of the app tag on all metrics
-`vdm_prometheus.namespace` | `vdm` | prefix all the metrics' label
-`vdm_prometheus.register_default_metrics` | `true` | app PromPHP Prometheus Client default metric
-`vdm_prometheus.secret` | `null` | if set, you need to provide the secret as a GET parameter `secret` or in the 
+Parameter | Default         | Description
+--- |-----------------| ---
+`vdm_prometheus.app` | `app`           | set the value of the app tag on all metrics
+`vdm_prometheus.namespace` | `vdm`           | prefix all the metrics' label
+`vdm_prometheus.register_default_metrics` | `true`          | app PromPHP Prometheus Client default metric
+`vdm_prometheus.register_extra_metrics` | see below | Enable extra metrics availabled
+`vdm_prometheus.secret` | `null`          | if set, you need to provide the secret as a GET parameter `secret` or in the 
 header `VDM-Prometheus-Secret` to get the detailed result of the metrics in the response body.
 `vdm_prometheus.metrics_path` | `/metrics` | Change the path of the metric endpoint.
 `vdm_prometheus.storage` | see below | Configure the storage to store metrics between requests
@@ -144,3 +148,39 @@ information.
 ## Grafana
 
 This bundle provides a [grafana dashboard](./Resources/grafana) setup to work with default configuration for settings `vdm_prometheus.app` and `vdm_prometheus.namespace`.
+
+## Extra Metrics
+
+This bundle provides Opcache and Apcu metrics. By default, none are enabled.
+Here is the list of available metrics :
+
+```yaml
+vdm_prometheus:
+  register_extra_metrics:
+      - 'Apcu\NumHitsCollector'
+      - 'Apcu\NumMissesCollector'
+      - 'Apcu\NumSlotsCollector'
+      - 'Apcu\StartTimeCollector'
+      - 'Apcu\TtlCollector'
+      - 'Opcache\FullCollector'
+      - 'Opcache\InternedStringsBufferSizeCollector'
+      - 'Opcache\InternedStringsCountCollector'
+      - 'Opcache\InternedStringsFreeCollector'
+      - 'Opcache\InternedStringsUsedCollector'
+      - 'Opcache\MemoryFreeCollector'
+      - 'Opcache\MemoryUsedCollector'
+      - 'Opcache\MemoryWastedCollector'
+      - 'Opcache\RestartInProgressCollector'
+      - 'Opcache\RestartPendingCollector'
+      - 'Opcache\StatsBlacklistMissesCollector'
+      - 'Opcache\StatsHashRestartsCollector'
+      - 'Opcache\StatsHitsCollector'
+      - 'Opcache\StatsLastRestartTimeCollector'
+      - 'Opcache\StatsManualRestartsCollector'
+      - 'Opcache\StatsMaxCachedKeysCollector'
+      - 'Opcache\StatsMissesCollector'
+      - 'Opcache\StatsNumCachedKeysCollector'
+      - 'Opcache\StatsNumCachedScriptsCollector'
+      - 'Opcache\StatsOomRestartsCollector'
+      - 'Opcache\StatsStartTimeCollector'
+```

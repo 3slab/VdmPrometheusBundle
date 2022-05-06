@@ -55,6 +55,14 @@ class VdmPrometheusExtension extends ConfigurableExtension
             $mergedConfig['register_default_metrics']
         ]);
 
+        foreach ($mergedConfig['register_extra_metrics'] as $extraMetric) {
+            $class = sprintf('Vdm\Bundle\PrometheusBundle\Monitoring\Collector\%s', $extraMetric);
+
+            $extraCollector = $container->register($class, $class);
+            $extraCollector->setAutowired(true);
+            $extraCollector->addTag('vdm_prometheus.collector');
+        }
+
         $loader = new YamlFileLoader(
             $container,
             new FileLocator(__DIR__ . '/../Resources/config')
