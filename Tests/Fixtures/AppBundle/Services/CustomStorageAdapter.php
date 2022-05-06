@@ -28,6 +28,11 @@ class CustomStorageAdapter implements Adapter
         // TODO: Implement updateCounter() method.
     }
 
+    public function updateSummary(array $data): void
+    {
+        // TODO: Implement updateSummary() method.
+    }
+
     public function wipeStorage(): void
     {
         // TODO: Implement wipeStorage() method.
