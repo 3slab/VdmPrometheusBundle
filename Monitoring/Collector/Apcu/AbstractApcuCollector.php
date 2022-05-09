@@ -34,11 +34,13 @@ abstract class AbstractApcuCollector extends AbstractCollector
 
     protected function getApcuCacheInfo(): array
     {
-        if (function_exists('apcu_cache_info')) {
-            $cacheInfo = apcu_cache_info(true);
+        if (function_exists('apcu_enabled') && function_exists('apcu_cache_info')) {
+            if (apcu_enabled()) {
+                $cacheInfo = apcu_cache_info(true);
 
-            if ($cacheInfo !== false) {
-                return $cacheInfo;
+                if ($cacheInfo !== false) {
+                    return $cacheInfo;
+                }
             }
         }
 

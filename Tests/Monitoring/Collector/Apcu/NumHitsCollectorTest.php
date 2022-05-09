@@ -24,13 +24,15 @@ class NumHitsCollectorTest extends TestCase
         $mockRequest = $this->createMock('Symfony\Component\HttpFoundation\Request');
         $mockResponse = $this->createMock('Symfony\Component\HttpFoundation\Response');
 
-        $apcuCacheInfoExists = function_exists('apcu_cache_info');
-
         $collector = new NumHitsCollector();
         $collector->collect($mockRequest, $mockResponse);
 
-        if ($apcuCacheInfoExists) {
-            $this->assertThat($collector->getData(), $this->isType('int'));
+        if (function_exists('apcu_enabled')) {
+            if (apcu_enabled() && function_exists('apcu_cache_info')) {
+                $this->assertThat($collector->getData(), $this->isType('int'));
+            } else {
+                $this->assertThat($collector->getData(), $this->isNull());
+            }
         } else {
             $this->assertThat($collector->getData(), $this->isNull());
         }
