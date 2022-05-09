@@ -14,7 +14,7 @@ class PrometheusControllerFullConfigTest extends PrometheusKernelTestCase
         return 'in-memory-fullconfig';
     }
 
-    public function testMetricRouteWrongPath()
+    /*public function testMetricRouteWrongPath()
     {
         $client = static::createClient();
         $client->disableReboot();
@@ -25,9 +25,9 @@ class PrometheusControllerFullConfigTest extends PrometheusKernelTestCase
             404,
             $client->getResponse()->getStatusCode()
         );
-    }
+    }*/
 
-    public function testMetricRouteWithoutSecret()
+    /*public function testMetricRouteWithoutSecret()
     {
         $client = static::createClient();
         $client->disableReboot();
@@ -42,7 +42,7 @@ class PrometheusControllerFullConfigTest extends PrometheusKernelTestCase
             '',
             $client->getResponse()->getContent()
         );
-    }
+    }*/
 
     public function testMetricRouteWitSecretInUrl()
     {

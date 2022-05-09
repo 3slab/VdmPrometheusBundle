@@ -10,14 +10,6 @@ class CustomStoragePassInvalidServiceTest extends PrometheusKernelTestCase
     /**
      * {@inheritDoc}
      */
-    public function tearDown(): void
-    {
-        parent::tearDown();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function setUp(): void
     {
         // Override because we want to setup in test

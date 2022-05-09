@@ -31,7 +31,8 @@ class ConfigurationTest extends TestCase
                 'metrics_path' => '/metrics',
                 'storage' => ['type' => 'memory', 'service' => null],
                 'namespace' => 'vdm',
-                'register_default_metrics' => true
+                'register_default_metrics' => true,
+                'register_extra_metrics' => [],
             ],
             $config
         );
@@ -58,7 +59,8 @@ class ConfigurationTest extends TestCase
                 'metrics_path' => '/metrics',
                 'storage' => ['type' => 'apcu', 'service' => null],
                 'namespace' => 'vdm',
-                'register_default_metrics' => true
+                'register_default_metrics' => true,
+                'register_extra_metrics' => [],
             ],
             $config
         );
@@ -96,7 +98,8 @@ class ConfigurationTest extends TestCase
                     'service' => null
                 ],
                 'namespace' => 'vdm',
-                'register_default_metrics' => true
+                'register_default_metrics' => true,
+                'register_extra_metrics' => [],
             ],
             $config
         );
@@ -121,7 +124,8 @@ class ConfigurationTest extends TestCase
                 'metrics_path' => '/metrics',
                 'storage' => ['type' => 'memory', 'service' => null],
                 'namespace' => 'vdm',
-                'register_default_metrics' => true
+                'register_default_metrics' => true,
+                'register_extra_metrics' => [],
             ],
             $config
         );
@@ -199,7 +203,8 @@ class ConfigurationTest extends TestCase
                     'service' => null
                 ],
                 'namespace' => 'vdm',
-                'register_default_metrics' => true
+                'register_default_metrics' => true,
+                'register_extra_metrics' => [],
             ]
         ];
 
@@ -232,7 +237,8 @@ class ConfigurationTest extends TestCase
                     'service' => null
                 ],
                 'namespace' => 'vdm',
-                'register_default_metrics' => true
+                'register_default_metrics' => true,
+                'register_extra_metrics' => [],
             ]
         ];
 
@@ -257,7 +263,8 @@ class ConfigurationTest extends TestCase
                     'service' => 'myserviceid'
                 ],
                 'namespace' => 'mycustomnamespace',
-                'register_default_metrics' => false
+                'register_default_metrics' => false,
+                'register_extra_metrics' => [],
             ]
         ];
 

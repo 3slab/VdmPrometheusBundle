@@ -31,9 +31,11 @@ abstract class PrometheusKernelTestCase extends KernelTestCase
      */
     public function tearDown(): void
     {
-        (new Filesystem())->remove(static::$kernel->getCacheDir());
-        (new Filesystem())->remove(static::$kernel->getLogDir());
-        (new Filesystem())->remove(static::$kernel->getProjectDir() . DIRECTORY_SEPARATOR . 'var');
+        if (static::$kernel instanceof KernelAlias) {
+            (new Filesystem())->remove(static::$kernel->getCacheDir());
+            (new Filesystem())->remove(static::$kernel->getLogDir());
+            (new Filesystem())->remove(static::$kernel->getProjectDir() . DIRECTORY_SEPARATOR . 'var');
+        }
         parent::tearDown();
         self::getClient(null);
     }
