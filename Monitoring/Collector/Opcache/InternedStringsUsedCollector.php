@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Vdm\Bundle\PrometheusBundle\Monitoring\Collector\Opcache;
 
 use Symfony\Component\HttpFoundation\Request;

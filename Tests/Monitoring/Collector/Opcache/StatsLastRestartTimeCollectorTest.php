@@ -16,7 +16,10 @@ class StatsLastRestartTimeCollectorTest extends TestCase
     public function testGetCollectorDescription()
     {
         $collector = new StatsLastRestartTimeCollector();
-        $this->assertEquals(StatsLastRestartTimeCollector::COLLECTOR_DESCRIPTION, $collector->getCollectorDescription());
+        $this->assertEquals(
+            StatsLastRestartTimeCollector::COLLECTOR_DESCRIPTION,
+            $collector->getCollectorDescription()
+        );
     }
 
     public function testCollect()
@@ -24,12 +27,10 @@ class StatsLastRestartTimeCollectorTest extends TestCase
         $mockRequest = $this->createMock('Symfony\Component\HttpFoundation\Request');
         $mockResponse = $this->createMock('Symfony\Component\HttpFoundation\Response');
 
-        $opcacheGetStatusExists = function_exists('opcache_get_status');
-
         $collector = new StatsLastRestartTimeCollector();
         $collector->collect($mockRequest, $mockResponse);
 
-        if ($opcacheGetStatusExists) {
+        if (function_exists('opcache_get_status')) {
             $status = opcache_get_status(false);
             if ($status['opcache_enabled']) {
                 $this->assertThat($collector->getData(), $this->isType('int'));
