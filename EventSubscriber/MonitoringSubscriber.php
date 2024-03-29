@@ -53,7 +53,8 @@ class MonitoringSubscriber implements EventSubscriberInterface
      */
     public function onKernelResponse(ResponseEvent $event)
     {
-        $master = $event->isMasterRequest();
+        $master = $event->isMainRequest();
+
         if (!$master) {
             return;
         }
@@ -90,11 +91,11 @@ class MonitoringSubscriber implements EventSubscriberInterface
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
-        return array(
+        return [
             KernelEvents::RESPONSE => array('onKernelResponse', -100),
             KernelEvents::TERMINATE => array('onKernelTerminate', -1024),
-        );
+        ];
     }
 }
